@@ -1,0 +1,136 @@
+<app-fp-navbar />
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="cta-area ptb-150" [class.component-rtl-enabled]="themeService.isRTLEnabled()">
+                <div class="welcome-card trezo-card mb-25 border-radius d-block bg-primary-500 border-0 shadow-none"
+                    [class.component-rtl-enabled]="themeService.isRTLEnabled()">
+                    <div class="trezo-card-content">
+                        <div class="content">
+                            <div class="container position-relative z-1">
+                                <div class="cta-content text-center mx-auto">
+                                    <h5 class="fw-semibold text-white">
+                                        {{greeting}}, <span>{{details?.name }}!</span>
+                                    </h5>
+                                    <p>
+                                        Here's what's happening with your bills today.
+                                    </p>
+                                    <div class="border-top"></div>
+                                    <div class="d-md-flex align-items-center">
+                                        <div class="item d-flex align-items-center">
+                                            <div
+                                                class="icon text-primary bg-primary-50 border-radius d-flex align-items-center justify-content-center">
+                                                <i class="material-symbols-outlined">
+                                                    shopping_bag
+                                                </i>
+                                            </div>
+                                            <div>
+                                                <span class="title d-block fw-semibold text-white">
+                                                    86 New groups
+                                                </span>
+                                                <span class="d-block">
+                                                    Awaiting processing
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="item d-flex align-items-center">
+                                            <div
+                                                class="icon text-danger bg-danger-50 border-radius d-flex align-items-center justify-content-center">
+                                                <i class="material-symbols-outlined">
+                                                    chat_error
+                                                </i>
+                                            </div>
+                                            <div>
+                                                <span class="title d-block fw-semibold text-white">
+                                                    35 groups
+                                                </span>
+                                                <span class="d-block">
+                                                    Out of stock
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="image">
+                            <img src="images/billDashboard.jpg" alt="welcome-image">
+                        </div>
+                    </div>
+                </div>
+                <div class="total-orders-card trezo-card mb-25 border-radius d-block bg-white border-0 shadow-none"
+                    [class.component-rtl-enabled]="themeService.isRTLEnabled()"
+                    [class.component-dark-theme]="themeService.isDark()">
+                    <div class="trezo-card-content">
+                        <div class="title">
+                            <div class="d-flex d-md-block d-lg-flex align-items-center justify-content-between">
+                                <div class="d-flex align-items-center">
+                                    <span class="d-block">
+                                        Total Expenses
+                                    </span>
+                                    <span class="info-badge down d-inline-block">
+                                        -7.6%
+                                    </span>
+                                </div>
+                                <span class="days d-block">
+                                    Last 7 days
+                                </span>
+                            </div>
+                            <h5 class="mb-0">
+                                {{totalExpense}}
+                            </h5>
+                        </div>
+                        <div class="chart mx-auto">
+                            <apx-chart [grid]="chartOptions.grid!" [chart]="chartOptions.chart!"
+                                [yaxis]="chartOptions.yaxis!" [xaxis]="chartOptions.xaxis!"
+                                [legend]="chartOptions.legend!" [stroke]="chartOptions.stroke!"
+                                [colors]="chartOptions.colors!" [series]="chartOptions.series!"
+                                [tooltip]="chartOptions.tooltip!" [dataLabels]="chartOptions.dataLabels!"
+                                [plotOptions]="chartOptions.plotOptions!"></apx-chart>
+                        </div>
+                        <ul class="ps-0 mb-0 list-unstyled">
+                            <li class="completed position-relative d-flex aling-items-center justify-content-between">
+                                <span class="d-block">
+                                    Completed payment
+                                </span>
+                                <span class="d-block">
+                                    {{sumOfPaidAmount}}
+                                </span>
+                            </li>
+                            <li class="pending position-relative d-flex aling-items-center justify-content-between">
+                                <span class="d-block">
+                                    Pending payment
+                                </span>
+                                <span class="d-block">
+                                    {{pendingPaidAmount}}
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="row">
+                <div class="col-lg-12 col-md-4">
+                    <div class="total-orders-card trezo-card mb-25 border-radius d-block bg-white border-0 shadow-none"
+                        [class.component-rtl-enabled]="themeService.isRTLEnabled()"
+                        [class.component-dark-theme]="themeService.isDark()">
+                        <div class="trezo-card-content">
+                            <h2>Comming SOON</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-4">
+                    <div class="total-orders-card trezo-card mb-25 border-radius d-block bg-white border-0 shadow-none"
+                        [class.component-rtl-enabled]="themeService.isRTLEnabled()"
+                        [class.component-dark-theme]="themeService.isDark()">
+                        <div class="trezo-card-content">
+                            <h2>Comming SOON</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

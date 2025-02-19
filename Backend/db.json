@@ -1,0 +1,339 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Test User",
+      "email": "test@example.com",
+      "password": "password123",
+      "role": "admin"
+    },
+    {
+      "id": 1734689042833,
+      "email": "sahil@gmail.com",
+      "password": "password@123",
+      "name": "sahil",
+      "role": "user"
+    },
+    {
+      "id": 1734691359392,
+      "email": "s@gmail.com",
+      "password": "12345678",
+      "name": "s",
+      "role": "user"
+    },
+    {
+      "id": 1734694000752,
+      "email": "qwe@gmail.com",
+      "password": "123212",
+      "name": "qwe",
+      "role": "user"
+    },
+    {
+      "id": 1734694452889,
+      "email": "a@gmail.com",
+      "password": "12345678",
+      "name": "a",
+      "role": "user"
+    },
+    {
+      "id": 1734695468289,
+      "email": "qwa@gmail.com",
+      "password": "12345678",
+      "name": "qwa",
+      "role": "user"
+    },
+    {
+      "id": 1734695567386,
+      "email": "www@gmail.com",
+      "password": "1",
+      "name": "www",
+      "role": "user"
+    },
+    {
+      "id": 1734695593321,
+      "email": "qqq@gmail.com",
+      "password": "22",
+      "name": "qqq",
+      "role": "user"
+    },
+    {
+      "id": 1734698042024,
+      "email": "kirtan@gmail.com",
+      "password": "12345678",
+      "name": "kirtan",
+      "role": "user"
+    },
+    {
+      "id": 1735719529061,
+      "email": "akshar@gmail.com",
+      "password": "12345678",
+      "name": "akshar"
+    },
+    {
+      "id": 1738585950154,
+      "email": "Shara@gmail.com",
+      "password": "123qweas",
+      "name": "Sharad"
+    }
+  ],
+  "groups": [
+    {
+      "name": "testing",
+      "participants": [
+        "a",
+        "www"
+      ],
+      "bgClass": "bg-orange-100",
+      "expenses": [],
+      "id": 5
+    },
+    {
+      "name": "test1",
+      "participants": [
+        "a",
+        "qwa",
+        "www"
+      ],
+      "bgClass": "bg-success-100",
+      "expenses": [],
+      "id": 6
+    },
+    {
+      "name": "test",
+      "participants": [
+        "sahil",
+        "qwe"
+      ],
+      "bgClass": "bg-orange-100",
+      "expenses": [
+        {
+          "reason": "",
+          "expense": "500",
+          "perHead": [
+            {
+              "name": "sahil",
+              "amount": 250,
+              "isPaid": true
+            },
+            {
+              "name": "qwe",
+              "amount": 250,
+              "isPaid": false
+            }
+          ]
+        },
+        {
+          "reason": "MOVIE",
+          "expense": "1000",
+          "perHead": [
+            {
+              "name": "sahil",
+              "amount": 500,
+              "isPaid": true
+            },
+            {
+              "name": "qwe",
+              "amount": 500,
+              "isPaid": true
+            }
+          ]
+        },
+        {
+          "reason": "",
+          "expense": "500",
+          "perHead": [
+            {
+              "name": "sahil",
+              "amount": 250,
+              "isPaid": true
+            },
+            {
+              "name": "qwe",
+              "amount": 250,
+              "isPaid": false
+            }
+          ]
+        }
+      ],
+      "id": 7
+    },
+    {
+      "name": "Upwas puff",
+      "participants": [
+        "s",
+        "www",
+        "kirtan"
+      ],
+      "bgClass": "bg-secondary-100",
+      "expenses": [
+        {
+          "reason": "Ekadshi puff",
+          "expense": "200",
+          "perHead": [
+            {
+              "name": "s",
+              "amount": 66.66666666666667,
+              "isPaid": true
+            },
+            {
+              "name": "www",
+              "amount": 66.66666666666667,
+              "isPaid": true
+            },
+            {
+              "name": "kirtan",
+              "amount": 66.66666666666667,
+              "isPaid": true
+            }
+          ]
+        },
+        {
+          "reason": "div-daman",
+          "expense": "4000",
+          "perHead": [
+            {
+              "name": "s",
+              "amount": 1333.3333333333333,
+              "isPaid": true
+            },
+            {
+              "name": "www",
+              "amount": 1333.3333333333333,
+              "isPaid": false
+            },
+            {
+              "name": "kirtan",
+              "amount": 1333.3333333333333,
+              "isPaid": true
+            }
+          ]
+        },
+        {
+          "expense": "500",
+          "perHead": [
+            {
+              "name": "s",
+              "amount": 25,
+              "isPaid": false
+            },
+            {
+              "name": "www",
+              "amount": 225,
+              "isPaid": false
+            },
+            {
+              "name": "kirtan",
+              "amount": 250,
+              "isPaid": false
+            }
+          ],
+          "reason": "movie"
+        }
+      ],
+      "id": 8
+    },
+    {
+      "name": "demo",
+      "participants": [
+        "s",
+        "kirtan"
+      ],
+      "bgClass": "bg-danger-100",
+      "expenses": [
+        {
+          "expense": "800",
+          "perHead": [
+            {
+              "name": "s",
+              "amount": 400,
+              "isPaid": false
+            },
+            {
+              "name": "kirtan",
+              "amount": 400,
+              "isPaid": false
+            }
+          ],
+          "reason": "Movie-ticket-popcorn"
+        }
+      ],
+      "id": 9
+    },
+    {
+      "name": "Test",
+      "participants": [
+        "s",
+        "www"
+      ],
+      "bgClass": "bg-secondary-100",
+      "expenses": [],
+      "id": 10
+    },
+    {
+      "name": "Mumbai",
+      "participants": [
+        "s",
+        "qqq"
+      ],
+      "bgClass": "bg-purple-100",
+      "expenses": [],
+      "id": 12
+    },
+    {
+      "name": "testinggg",
+      "participants": [
+        "s",
+        "a",
+        "qwa"
+      ],
+      "bgClass": "bg-secondary-100",
+      "expenses": [],
+      "id": 13
+    },
+    {
+      "name": "Puff",
+      "participants": [
+        "sahil",
+        "www",
+        "akshar",
+        "Sharad",
+        null
+      ],
+      "bgClass": "bg-danger-100",
+      "expenses": [
+        {
+          "reason": "Trip",
+          "expense": "3550",
+          "perHead": [
+            {
+              "name": "sahil",
+              "amount": 710,
+              "isPaid": false
+            },
+            {
+              "name": "www",
+              "amount": 710,
+              "isPaid": false
+            },
+            {
+              "name": "akshar",
+              "amount": 710,
+              "isPaid": false
+            },
+            {
+              "name": "Sharad",
+              "amount": 710,
+              "isPaid": true
+            },
+            {
+              "name": null,
+              "amount": 710,
+              "isPaid": false
+            }
+          ]
+        }
+      ],
+      "id": 14
+    }
+  ]
+}
