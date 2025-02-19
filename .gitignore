@@ -5,3 +5,5 @@ backend/node_modules/
 # Ignore build/dist folders
 frontend/dist/
 backend/dist/
+backend/db.json
+
