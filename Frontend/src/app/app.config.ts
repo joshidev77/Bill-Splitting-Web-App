@@ -9,7 +9,7 @@ import { customInterceptor } from './interceptor/custom.interceptor';
 import { AuthGuardService } from './service/auth-guard.service';
 import { GroupService } from './service/groups.service';
 import { ProtectedAuthGuardService } from './service/protected-auth-guard.service';
-import { LocalStorageTokenService } from './service/localStorageToken.service';
+import { StorageTokenService } from './service/StorageToken.service';
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -21,6 +21,6 @@ export const appConfig: ApplicationConfig = {
         AuthGuardService,
         GroupService,
         ProtectedAuthGuardService,
-        LocalStorageTokenService
+        StorageTokenService
     ]
 };

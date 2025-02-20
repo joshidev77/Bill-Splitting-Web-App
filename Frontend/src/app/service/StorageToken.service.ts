@@ -1,17 +1,17 @@
 import { StorageKeys } from "../Enums/enum";
 
-export class LocalStorageTokenService {
+export class StorageTokenService {
     setToken(token: string): void {
-        localStorage.setItem(StorageKeys.TOKEN, token);
+        sessionStorage.setItem(StorageKeys.TOKEN, token);
     }
 
     // Retrieve token from localStorage
     getToken(): string | null {
-        return localStorage.getItem(StorageKeys.TOKEN);
+        return sessionStorage.getItem(StorageKeys.TOKEN);
     }
 
     // Remove token from localStorage
     removeToken(): void {
-        localStorage.removeItem(StorageKeys.TOKEN);
+        sessionStorage.removeItem(StorageKeys.TOKEN);
     }
 }

@@ -5,7 +5,7 @@ import { NgClass } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Validators } from 'ngx-editor';
-import { LocalStorageTokenService } from '../../service/localStorageToken.service';
+import { StorageTokenService } from '../../service/StorageToken.service';
 
 
 
@@ -23,7 +23,7 @@ export class SignInComponent {
     isConfirmPasswordVisible: boolean = false;
     formData: FormGroup
 
-    constructor(public themeService: CustomizerSettingsService, private httpClient: HttpClient, private fb: FormBuilder, private router: Router,private localStorageService: LocalStorageTokenService) {
+    constructor(public themeService: CustomizerSettingsService, private httpClient: HttpClient, private fb: FormBuilder, private router: Router,private StorageService: StorageTokenService) {
         this.themeService.isToggled$.subscribe(isToggled => {
             this.isToggled = isToggled;
         });
@@ -48,7 +48,7 @@ export class SignInComponent {
             password: this.formData.get('Password')?.getRawValue(),
         }
         this.httpClient.post(url, requestbody).subscribe((res: any) => {
-            this.localStorageService.setToken(res.token)
+            this.StorageService.setToken(res.token)
             this.formData.reset()
             this.toggleClass2()
             this.router.navigate(['/Home'])

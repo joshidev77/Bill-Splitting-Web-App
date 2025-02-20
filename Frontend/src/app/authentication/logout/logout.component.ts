@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CustomizerSettingsService } from '../../customizer-settings/customizer-settings.service';
-import { LocalStorageTokenService } from '../../service/localStorageToken.service';
+import { StorageTokenService } from '../../service/StorageToken.service';
 
 @Component({
     selector: 'app-logout',
@@ -16,7 +16,7 @@ export class LogoutComponent {
     isToggled = false;
 
     constructor(
-        public themeService: CustomizerSettingsService, private localStorageService: LocalStorageTokenService
+        public themeService: CustomizerSettingsService, private StorageService: StorageTokenService
     ) {
         this.themeService.isToggled$.subscribe(isToggled => {
             this.isToggled = isToggled;
@@ -24,7 +24,7 @@ export class LogoutComponent {
     }
 
     logout() {
-        this.localStorageService.removeToken()
+        this.StorageService.removeToken()
         console.log('user logged out');
     }
 

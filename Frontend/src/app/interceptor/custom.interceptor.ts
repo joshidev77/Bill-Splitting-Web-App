@@ -3,7 +3,7 @@ import { StorageKeys } from '../Enums/enum';
 
 export const customInterceptor: HttpInterceptorFn = (req, next) => {
 
-    const myToken = localStorage.getItem(StorageKeys.TOKEN)
+    const myToken = sessionStorage.getItem(StorageKeys.TOKEN)
     const request = req.clone({
         setHeaders: {
             authorization: `'Bearer' ${myToken}`
