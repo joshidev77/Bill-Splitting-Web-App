@@ -1,11 +1,14 @@
 import jsonServer from "json-server";
 import jwt from "jsonwebtoken";
 import bodyParser from "body-parser";
-
+import cors from "cors";
 const server = jsonServer.create();
 const router = jsonServer.router("db.json");
 const middlewares = jsonServer.defaults();
+server.use(bodyParser.json());
 
+server.use(middlewares);
+server.use(cors());
 const SECRET_KEY = "your_secret_key";
 const expiresIn = "1h";
 
@@ -28,8 +31,7 @@ function verifyToken(req, res, next) {
   }
 }
 
-server.use(bodyParser.json());
-server.use(middlewares);
+
 
 // Authentication endpoints
 server.post("/login", (req, res) => {
