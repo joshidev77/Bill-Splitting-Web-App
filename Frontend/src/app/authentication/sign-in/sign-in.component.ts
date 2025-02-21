@@ -24,7 +24,7 @@ export class SignInComponent {
     isConfirmPasswordVisible: boolean = false;
     formData: FormGroup
 
-    constructor(public themeService: CustomizerSettingsService, private httpClient: HttpClient, private fb: FormBuilder, private router: Router,private StorageService: StorageTokenService) {
+    constructor(public themeService: CustomizerSettingsService, private httpClient: HttpClient, private fb: FormBuilder, private router: Router, private StorageService: StorageTokenService) {
         this.themeService.isToggled$.subscribe(isToggled => {
             this.isToggled = isToggled;
         });
@@ -42,24 +42,32 @@ export class SignInComponent {
     toggleConfirmPasswordVisibility(): void {
         this.isConfirmPasswordVisible = !this.isConfirmPasswordVisible;
     }
+
+    spinner = false
     onLogin() {
-        const url = `${APIURL}/login`
-        const requestbody = {
-            email: this.formData.get('Email')?.getRawValue(),
-            password: this.formData.get('Password')?.getRawValue(),
-        }
-        this.httpClient.post(url, requestbody).subscribe((res: any) => {
-            this.StorageService.setToken(res.token)
-            this.formData.reset()
-            this.toggleClass2()
-            this.router.navigate(['/Home'])
-        }, (error) => {
-            if (error.status === 401) {
-                this.toggleClass3()
-                this.formData.reset()
+        this.spinner = true
+        setTimeout(() => {
+            this.spinner = false;
+            const url = `${APIURL}/login`
+            const requestbody = {
+                email: this.formData.get('Email')?.getRawValue(),
+                password: this.formData.get('Password')?.getRawValue(),
             }
-        })
+            this.httpClient.post(url, requestbody).subscribe((res: any) => {
+                this.spinner = true
+                this.StorageService.setToken(res.token)
+                this.formData.reset()
+
+                this.router.navigate(['/Home'])
+            }, (error) => {
+                if (error.status === 401) {
+                    this.toggleClass3()
+                    this.formData.reset()
+                }
+            })
+        }, 1000);
     }
+
 
     classApplied2 = false;
     classApplied3 = false;

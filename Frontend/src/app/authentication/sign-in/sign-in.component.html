@@ -33,42 +33,54 @@
                                 <i [ngClass]="isPasswordVisible ? 'ri-eye-line' : 'ri-eye-off-line'"></i>
                             </button>
                         </div>
-                        <button type="submit" class="btn-box d-block w-100 border-0 transition fw-medium border-radius">
-                            <span class="d-flex align-items-center justify-content-center">
-                                <i class="material-symbols-outlined">
-                                    person_4
-                                </i>
-                                Login
-                            </span>
-                        </button>
-                        <div class="toast-container transition position-fixed bottom-0 end-0 p-3"
-                            [class.show]="classApplied2">
-                            <div class="toast" role="alert">
-                                <div class="toast-header">
-                                    <strong class="me-auto">LoggedIn</strong>
-                                    <small>1 mins ago</small>
-                                    <button type="button" class="btn-close shadow-none" aria-label="Close"
-                                        (click)="toggleClass2()"></button>
-                                </div>
-                                <div class="toast-body">
-                                    Login Successfully !!
+                        <div [class.blur-background]="spinner">
+                            <button type="submit" [disabled]="spinner"
+                                class="btn-box d-block w-100 border-0 transition fw-medium border-radius">
+                                <span class="d-flex align-items-center justify-content-center">
+                                    <i class="material-symbols-outlined">
+                                        person_4
+                                    </i>
+                                    Login
+                                </span>
+                            </button>
+                            <div class="toast-container transition position-fixed bottom-0 end-0 p-3"
+                                [class.show]="classApplied2">
+                                <div class="toast" role="alert">
+                                    <div class="toast-header">
+                                        <strong class="me-auto">LoggedIn</strong>
+                                        <small>1 mins ago</small>
+                                        <button type="button" class="btn-close shadow-none" aria-label="Close"
+                                            (click)="toggleClass2()"></button>
+                                    </div>
+                                    <div class="toast-body">
+                                        Login Successfully !!
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                            <div class="toast-container transition position-fixed bottom-0 end-0 p-3" [class.show]="classApplied3">
-                                <div class="toast" role="alert">
-                                    <div class="toast-header">
-                                        <strong class="me-auto">Error</strong>
-                                        <button type="button" class="btn-close shadow-none" aria-label="Close" (click)="toggleClass3()"></button>
-                                    </div>
-                                    <div class="toast-body">
-                                        Unauthorized! Please check your email or password
-                                    </div>
+                        @if (spinner) {
+                        <div class="spinner-overlay">
+                            <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                        }
+                        <div class="toast-container transition position-fixed bottom-0 end-0 p-3"
+                            [class.show]="classApplied3">
+                            <div class="toast" role="alert">
+                                <div class="toast-header">
+                                    <strong class="me-auto">Error</strong>
+                                    <button type="button" class="btn-close shadow-none" aria-label="Close"
+                                        (click)="toggleClass3()"></button>
+                                </div>
+                                <div class="toast-body">
+                                    Unauthorized! Please check your email or password
                                 </div>
                             </div>
+                        </div>
                         <p class="info">
-                            Don't have an account. <a routerLink="/Register"
-                                class="fw-semibold text-primary">Register Here!</a>
+                            Don't have an account. <a routerLink="/Register" class="fw-semibold text-primary">Register
+                                Here!</a>
                         </p>
                     </form>
                 </div>

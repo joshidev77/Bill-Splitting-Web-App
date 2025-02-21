@@ -95,7 +95,9 @@ export class FeaturesComponent implements OnInit {
             this.updateSelectedDropdownValues();
         })
     }
+    spinner = false
     addGroup() {
+        this.spinner = true;
         const url = `${APIURL}/groups`
         const randomBgClass = this.backgroundClasses[Math.floor(Math.random() * this.backgroundClasses.length)];
         const requestbody = {
@@ -113,10 +115,12 @@ export class FeaturesComponent implements OnInit {
                 this.selectedParticipants = []
                 this.openDialog()
                 this.refreshGroups()
+                this.spinner = false
             }
         )
     }
     deleteGroup() {
+        this.spinner = true
         if (this.selectedGroupId === null) {
             console.error("No group selected for deletion.");
             return;
@@ -124,10 +128,10 @@ export class FeaturesComponent implements OnInit {
         const url = `${APIURL}/groups/${this.selectedGroupId}`;
         this.httpClient.delete(url).subscribe(
             () => {
-                ;
                 this.confirmationToast();
                 this.openConfirmation();
                 this.refreshGroups();
+                this.spinner = false
             },
             (error) => {
                 console.error("Error deleting group:", error);

@@ -39,6 +39,11 @@
                                             </button>
                                             <div class="modal fade" tabindex="-1" [class.show]="openConfirmation1">
                                                 <div class="modal-dialog modal-dialog-centered">
+                                                    @if (spinner) {
+                                                    <div class="spinner-border" style="width: 3rem; height: 3rem;"
+                                                        role="status">
+                                                        <span class="visually-hidden">Loading...</span>
+                                                    </div>}@else {
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h1 class="modal-title fs-5">Delete Group</h1>
@@ -56,6 +61,7 @@
                                                                 class="btn btn-danger">Delete</button>
                                                         </div>
                                                     </div>
+                                                    }
                                                 </div>
                                                 <div class="modal-backdrop fade show"></div>
                                             </div>
@@ -100,6 +106,12 @@
 
 <div class="add-new-popup" [class.active]="openDialog1">
     <div class="popup-dialog">
+        @if (spinner) {
+        <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        }
+        @else{
         <div>
             <div class="trezo-card w-100 border-radius d-block bg-white border-0 shadow-none">
                 <div class="trezo-card-header d-flex align-items-center justify-content-between">
@@ -129,8 +141,7 @@
                                     Participants
                                 </label>
                                 <app-multi-select-dropdown [options]="dropdownOptions" ngDefaultControl
-                                    placeholder="Select User"
-                                     [selectedValues]="selectedDropdownValues"
+                                    placeholder="Select User" [selectedValues]="selectedDropdownValues"
                                     (selectionChange)="onSelectionChange($event)"></app-multi-select-dropdown>
 
                             </div>
@@ -141,8 +152,7 @@
                             class="warn d-inline-block fw-medium border-0 border-radius transition">
                             Cancel
                         </button>
-                        <button type="button" (click)="addGroup()"
-                            class="primary d-inline-block fw-medium border-0 border-radius transition">
+                        <button type="button" (click)="addGroup()" class="primary border-0 border-radius">
                             <span class="position-relative d-inline-block">
                                 <i class="material-symbols-outlined">
                                     add </i>
@@ -153,5 +163,6 @@
                 </div>
             </div>
         </div>
+        }
     </div>
 </div>

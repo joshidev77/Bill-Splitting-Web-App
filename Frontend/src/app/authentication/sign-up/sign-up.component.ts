@@ -21,7 +21,7 @@ export class SignUpComponent implements OnInit {
     isConfirmPasswordVisible: boolean = false;
     formData: FormGroup
 
-    constructor(public themeService: CustomizerSettingsService, private httpClient: HttpClient,private fb:FormBuilder) {
+    constructor(public themeService: CustomizerSettingsService, private httpClient: HttpClient, private fb: FormBuilder) {
         this.themeService.isToggled$.subscribe(isToggled => {
             this.isToggled = isToggled;
         });
@@ -32,7 +32,7 @@ export class SignUpComponent implements OnInit {
             Name: [''],
             Email: [''],
             Password: ['', [Validators.required, Validators.minLength(8)]],
-            ConfirmPassword:['',[Validators.required, Validators.minLength(8)]]
+            ConfirmPassword: ['', [Validators.required, Validators.minLength(8)]]
         })
     }
     togglePasswordVisibility(): void {
@@ -41,18 +41,22 @@ export class SignUpComponent implements OnInit {
     toggleConfirmPasswordVisibility(): void {
         this.isConfirmPasswordVisible = !this.isConfirmPasswordVisible;
     }
+    spinner = false
     onSubmit() {
-        const url = `${APIURL}/register`
-        const requestbody = {
-            name: this.formData.get('Name')?.getRawValue(),
-            email: this.formData.get('Email')?.getRawValue(),
-            password: this.formData.get('Password')?.getRawValue(),
-        }
-        this.httpClient.post(url, requestbody).subscribe((res) => {
-            this.toggleClass2()
-            this.formData.reset()
-            // this.router.navigate(['/authentication'])
-        })
+        this.spinner = true
+        setTimeout(() => {
+            this.spinner = false;
+            const url = `${APIURL}/register`
+            const requestbody = {
+                name: this.formData.get('Name')?.getRawValue(),
+                email: this.formData.get('Email')?.getRawValue(),
+                password: this.formData.get('Password')?.getRawValue(),
+            }
+            this.httpClient.post(url, requestbody).subscribe((res) => {
+                this.toggleClass2()
+                this.formData.reset()
+            })
+        }, 1000)
     }
     classApplied2 = false;
     toggleClass2() {

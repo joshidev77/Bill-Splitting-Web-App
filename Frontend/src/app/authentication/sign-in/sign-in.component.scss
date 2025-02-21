@@ -183,6 +183,44 @@
     }
 }
 
+.spinner-border, .spinner-grow, .btn {
+    margin-right: 15px;
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+.component-rtl-enabled {
+    .spinner-border, .spinner-grow, .btn {
+        margin: {
+            right: 0;
+            left: 15px;
+        };
+        &:last-child {
+            margin-left: 0;
+        }
+    }
+}
+/* Blur effect */
+.blur-background {
+    filter: blur(5px);
+    pointer-events: none; /* Prevent interactions */
+}
+
+/* Fullscreen overlay when spinner is active */
+.spinner-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
 /* Max width 767px */
 @media only screen and (max-width : 767px) {
 

@@ -51,14 +51,24 @@
                                     <i [ngClass]="isConfirmPasswordVisible ? 'ri-eye-line' : 'ri-eye-off-line'"></i>
                                 </button>
                             </div> -->
-                        <button type="submit" class="btn-box d-block w-100 border-0 transition fw-medium border-radius">
-                            <span class="d-flex align-items-center justify-content-center">
-                                <i class="material-symbols-outlined">
-                                    person_4
-                                </i>
-                                Register
-                            </span>
-                        </button>
+                        <div [class.blur-background]="spinner">
+                            <button type="submit"
+                                class="btn-box d-block w-100 border-0 transition fw-medium border-radius">
+                                <span class="d-flex align-items-center justify-content-center">
+                                    <i class="material-symbols-outlined">
+                                        person_4
+                                    </i>
+                                    Register
+                                </span>
+                            </button>
+                        </div>
+                        @if (spinner) {
+                        <div class="spinner-overlay">
+                            <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                        }
                         <div class="toast-container transition position-fixed bottom-0 end-0 p-3"
                             [class.show]="classApplied2">
                             <div class="toast" role="alert">
@@ -74,8 +84,7 @@
                             </div>
                         </div>
                         <p class="info">
-                            Already have an account. <a routerLink=""
-                                class="fw-semibold text-primary">Log In</a>
+                            Already have an account. <a routerLink="" class="fw-semibold text-primary">Log In</a>
                         </p>
                     </form>
                 </div>

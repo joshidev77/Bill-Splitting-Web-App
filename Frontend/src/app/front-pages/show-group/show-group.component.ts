@@ -14,7 +14,7 @@ import { APIURL } from '../../env';
 @Component({
     selector: 'app-show-group',
     standalone: true,
-    imports: [FormsModule, NgClass,RouterLink, DecimalPipe, FormsModule, CurrencyPipe],
+    imports: [FormsModule, NgClass, RouterLink, DecimalPipe, FormsModule, CurrencyPipe],
     templateUrl: './show-group.component.html',
     styleUrls: ['./show-group.component.scss'],
 })
@@ -97,10 +97,10 @@ export class ShowGroupComponent implements OnInit {
 
     payment() {
         const url = `${APIURL}/groups/${this.groups}`
-        const perHead = this.exp?.perHead?.map((ph:PerHead) => ({
+        const perHead = this.exp?.perHead?.map((ph: PerHead) => ({
             name: ph.name,
-            amount:ph.amount,
-            isPaid:ph.name===this.userDetails?true:ph.isPaid
+            amount: ph.amount,
+            isPaid: ph.name === this.userDetails ? true : ph.isPaid
         }))
         const updatedExp = this.groupDetail?.expenses?.map((expe: Expense) => {
             if (this.exp?.reason === expe.reason) {
@@ -115,7 +115,7 @@ export class ShowGroupComponent implements OnInit {
         this.httpClient.patch(url, { expenses: updatedExp }).subscribe(
             (res) => {
                 this.refreshGroups();
-                this.isOpenPayment =false
+                this.isOpenPayment = false
             }
         )
     }
@@ -130,8 +130,9 @@ export class ShowGroupComponent implements OnInit {
     }
 
 
-
+    spinner = false
     sendRequest() {
+        this.spinner = true
         const url = `${APIURL}/groups/${this.groups}`
         this.httpClient.get<GroupList>(url).subscribe(
             (res: GroupList) => {
@@ -148,6 +149,7 @@ export class ShowGroupComponent implements OnInit {
                 const exp = [...(res.expenses || []), reqbody]
                 this.httpClient.patch(url, { expenses: exp }).subscribe(
                     (res) => {
+                        this.spinner = false
                         this.openSplitPopUp()
                         this.refreshGroups()
                     }
