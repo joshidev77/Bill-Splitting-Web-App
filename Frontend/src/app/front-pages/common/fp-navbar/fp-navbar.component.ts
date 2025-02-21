@@ -4,6 +4,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CustomizerSettingsService } from '../../../customizer-settings/customizer-settings.service';
 import { UserLoginDetail } from '../../../modals/modal';
 import { HttpClient } from '@angular/common/http';
+import { APIURL } from '../../../env';
 
 @Component({
     selector: 'app-fp-navbar',
@@ -31,7 +32,7 @@ export class FpNavbarComponent implements OnInit {
         this.userLoggedInDetail()
     }
     userLoggedInDetail() {
-        const url = 'http://localhost:3000/me'
+        const url = `${APIURL}/me`
         this.httpClient.get<{ user: UserLoginDetail }>(url).subscribe(
             (res) => {
                 this.details = res.user

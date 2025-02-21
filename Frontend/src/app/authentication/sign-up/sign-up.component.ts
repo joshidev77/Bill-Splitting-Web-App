@@ -4,6 +4,7 @@ import { CustomizerSettingsService } from '../../customizer-settings/customizer-
 import { NgClass } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { APIURL } from '../../env';
 
 @Component({
     selector: 'app-sign-up',
@@ -41,7 +42,7 @@ export class SignUpComponent implements OnInit {
         this.isConfirmPasswordVisible = !this.isConfirmPasswordVisible;
     }
     onSubmit() {
-        const url = 'http://localhost:3000/register'
+        const url = `${APIURL}/register`
         const requestbody = {
             name: this.formData.get('Name')?.getRawValue(),
             email: this.formData.get('Email')?.getRawValue(),

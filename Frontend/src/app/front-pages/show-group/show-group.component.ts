@@ -9,6 +9,7 @@ import { GroupList } from '../../modals/modal';
 import { Expense } from '../../modals/modal';
 import { UserLoginDetail } from '../../modals/modal';
 import { PerHead } from '../../modals/modal';
+import { APIURL } from '../../env';
 
 @Component({
     selector: 'app-show-group',
@@ -42,7 +43,7 @@ export class ShowGroupComponent implements OnInit {
         this.route.params.subscribe((data: Params) => {
             this.groups = Number(data['id']);
         });
-        const url = 'http://localhost:3000/me'
+        const url = `${APIURL}/me`
         this.httpClient.get<{ user: UserLoginDetail }>(url).subscribe(
             (response) => {
                 this.userDetails = response.user.name
@@ -95,7 +96,7 @@ export class ShowGroupComponent implements OnInit {
 
 
     payment() {
-        const url = `http://localhost:3000/groups/${this.groups}`
+        const url = `${APIURL}/groups/${this.groups}`
         const perHead = this.exp?.perHead?.map((ph:PerHead) => ({
             name: ph.name,
             amount:ph.amount,
@@ -131,7 +132,7 @@ export class ShowGroupComponent implements OnInit {
 
 
     sendRequest() {
-        const url = `http://localhost:3000/groups/${this.groups}`
+        const url = `${APIURL}/groups/${this.groups}`
         this.httpClient.get<GroupList>(url).subscribe(
             (res: GroupList) => {
                 const perHeadArray = this.groupDetail?.participants.map((participant: string, index: number) => ({

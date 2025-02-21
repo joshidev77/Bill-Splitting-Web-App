@@ -10,6 +10,7 @@ import { RouterLink } from '@angular/router';
 import { GroupList } from '../../modals/modal';
 import { User } from '../../modals/modal';
 import { UserLoginDetail } from '../../modals/modal';
+import { APIURL } from '../../env';
 @Component({
     selector: 'app-features',
     standalone: true,
@@ -64,7 +65,7 @@ export class FeaturesComponent implements OnInit {
     }
 
     ngOnInit() {
-        const url = 'http://localhost:3000/me'
+        const url = `${APIURL}/me`
         this.httpClient.get<{ user: UserLoginDetail }>(url).subscribe(
             (response) => {
                 this.userDetails = response.user.name
@@ -95,7 +96,7 @@ export class FeaturesComponent implements OnInit {
         })
     }
     addGroup() {
-        const url = 'http://localhost:3000/groups'
+        const url = `${APIURL}/groups`
         const randomBgClass = this.backgroundClasses[Math.floor(Math.random() * this.backgroundClasses.length)];
         const requestbody = {
             name: this.groupName,
@@ -120,7 +121,7 @@ export class FeaturesComponent implements OnInit {
             console.error("No group selected for deletion.");
             return;
         }
-        const url = `http://localhost:3000/groups/${this.selectedGroupId}`;
+        const url = `${APIURL}/groups/${this.selectedGroupId}`;
         this.httpClient.delete(url).subscribe(
             () => {
                 ;

@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { APIURL } from "../env";
 
 interface GroupList {
     id: number
@@ -24,9 +25,9 @@ interface User {
 export class GroupService {
     constructor(private httpClient: HttpClient) { }
     getGroup(): Observable<GroupList[]> {
-        return this.httpClient.get<GroupList[]>('http://localhost:3000/groups');
+        return this.httpClient.get<GroupList[]>(`${APIURL}/groups`);
     }
     getUsers(): Observable<User[]> {
-        return this.httpClient.get<User[]>('http://localhost:3000/users')
+        return this.httpClient.get<User[]>(`${APIURL}/users`)
     }
 }

@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Validators } from 'ngx-editor';
 import { StorageTokenService } from '../../service/StorageToken.service';
+import { APIURL } from '../../env';
 
 
 
@@ -42,7 +43,7 @@ export class SignInComponent {
         this.isConfirmPasswordVisible = !this.isConfirmPasswordVisible;
     }
     onLogin() {
-        const url = 'http://localhost:3000/login'
+        const url = `${APIURL}/login`
         const requestbody = {
             email: this.formData.get('Email')?.getRawValue(),
             password: this.formData.get('Password')?.getRawValue(),

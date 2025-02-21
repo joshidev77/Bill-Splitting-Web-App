@@ -6,6 +6,7 @@ import { ApexTitleSubtitle, ApexAxisChartSeries, ApexDataLabels, ApexTooltip, Ap
 import { GroupService } from '../../../service/groups.service';
 import { UserLoginDetail } from '../../../modals/modal';
 import { GroupList } from '../../../modals/modal';
+import { APIURL } from '../../../env';
 type ChartOptions = {
     plotOptions: ApexPlotOptions;
     subtitle: ApexTitleSubtitle;
@@ -215,7 +216,7 @@ export class FpCtaComponent implements OnInit {
 
     details: UserLoginDetail | null | undefined = null;
     userLoggedInDetail() {
-        const url = 'http://localhost:3000/me'
+        const url = `${APIURL}/me`
         this.httpClient.get<{ user: UserLoginDetail }>(url).subscribe(
             (res) => {
                 this.details = res.user
